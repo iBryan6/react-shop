@@ -1,6 +1,7 @@
 import React, { Fragment }from 'react'
 
-export default ({artist, image, genre,description,price}) =>
+export default ({match,artist, image, genre,description,price}) =>
+console.log(match) ||
 <Fragment>
     <div className="container">
             <table className="table">

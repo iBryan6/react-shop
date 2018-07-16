@@ -3,6 +3,7 @@ import { BrowserRouter, Link, Route } from 'react-router-dom'
 import DocumentTitle from 'react-document-title'
 import Catalog from './Catalog'
 import Item from './Catalog/Item'
+import Cart from './Cart'
 
 //HOME
 function Homebody (){
@@ -45,7 +46,7 @@ class App extends Component {
                     </div>
                     <div className="row">
                         <div className="offset-md-10">
-                            <button type="button" className="btn btn-outline-dark">5 Items in the Cart <i className="fas fa-shopping-cart"></i></button>
+                        <Link to="/cart"><button type="button" className="btn btn-outline-dark">5 Items in the Cart <i className="fas fa-shopping-cart"></i></button></Link>
                         </div>
                     </div><br/>
                 </div>
@@ -60,9 +61,14 @@ class App extends Component {
                     }/>
                 </div>
 
-                {/*CATALOG*/}
-                <Route path={`/catalog/:catalogId`} render = {
-                        props => <Item {...props} {...tickets.find(item => item.id === props.match.params.catalogId)} />
+                {/*ITEM*/}
+                <Route exact path={`/catalog/:catalogId`} render = {
+                        props => <Item />
+                    }/>
+                
+                {/*CART*/}
+                <Route exact path={`/cart`} render = {
+                        props => <Cart {...props} {...tickets.find(item => item.id === props.match.params.catalogId)} />
                     }/>
             </Fragment>
         </BrowserRouter>
