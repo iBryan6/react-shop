@@ -4,7 +4,7 @@ import DocumentTitle from 'react-document-title'
 
 export default ({ match:{url}, tickets })=>
 <Fragment>
-<DocumentTitle title='Catalog'></DocumentTitle>
+<DocumentTitle title='Ticket Catalog'></DocumentTitle>
     {tickets.map(({id,artist,image}) =>
     <div key={id} className="col-md-4">
         <div className="card text-center">

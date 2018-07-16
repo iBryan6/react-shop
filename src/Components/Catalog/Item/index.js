@@ -3,7 +3,7 @@ import DocumentTitle from 'react-document-title'
 
 export default ({artist, image, genre,description,price}) =>
 <Fragment>
-<DocumentTitle title={artist}></DocumentTitle>
+<DocumentTitle title={artist +" Ticket Detail"}></DocumentTitle>
     <div className="container text-center">
         <div class="card mb-4 box-shadow">
           <div class="card-header">
