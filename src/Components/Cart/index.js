@@ -10,7 +10,7 @@ export default ({cart, numRows}) =>
         <div className="row text-center">
             <div className="col-md title">
                 <h1>Cart</h1>
-                <Link to="/catalog"><kbd><i class="fas fa-chevron-left"></i> GO BACK</kbd></Link>
+                <Link to="/catalog"><kbd><i className="fas fa-chevron-left"></i> GO BACK</kbd></Link>
             </div>
         </div><br/>
     </div>
