@@ -43,7 +43,11 @@ class App extends Component {
 
     /*Delete from Cart*/
     DeletefromCart(id){
-        console.log(id)
+        const cart = this.state.cart
+        const filtered = cart.filter(cart =>{
+            return cart.id !== id;
+        })
+        this.setState({ cart: filtered })
     }
 
     render() {
