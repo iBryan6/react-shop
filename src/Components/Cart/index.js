@@ -1,8 +1,11 @@
 import React, { Fragment }from 'react'
+import DocumentTitle from 'react-document-title'
 
-export default ({match,artist, image, genre,description,price}) =>
-console.log(match) ||
+export default ({ cart }) =>
+
 <Fragment>
+<DocumentTitle title='Cart'></DocumentTitle>
+
     <div className="container">
             <table className="table">
                 <thead>
@@ -14,16 +17,19 @@ console.log(match) ||
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
+                    {cart.map(({id,item,quantity,price}) => 
+                    <tr key={id}>
+                        <td>{item}</td>
+                        <td>{quantity}</td>
+                        <td>{price}</td>
+                        <td>{quantity*price}</td>
                     </tr>
+                    )}
                 </tbody>
             </table>
             <div className="offset-md-8">
                 <h2>Total: 20</h2>
             </div>
     </div>
+    
 </Fragment>

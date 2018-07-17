@@ -8,7 +8,7 @@ import Cart from './Cart'
 //HOME
 function Homebody (){
     return (
-        <div className="container">
+        <div className="container text-center">
         <DocumentTitle title='Home'></DocumentTitle>
             <Link to="/catalog" className="text-center">CLICK ME TO CONTINUE</Link>
         </div>
@@ -21,7 +21,7 @@ class App extends Component {
         super(props)
         this.state ={
             tickets: [],
-            title: 'Untitled'
+            cart:[]
         }
     }
 
@@ -29,10 +29,13 @@ class App extends Component {
     async componentDidMount(){
         const tickets = await (await fetch('http://localhost:3004/tickets')).json()
         this.setState({tickets})
+        const cart = await (await fetch('http://localhost:3004/cart')).json()
+        this.setState({cart})
     }
 
     render() {
         const {tickets} = this.state
+        const {cart} = this.state
 
         /*Page*/
         return <BrowserRouter>
@@ -46,7 +49,7 @@ class App extends Component {
                     </div>
                     <div className="row">
                         <div className="offset-md-10">
-                        <Link to="/cart"><button type="button" className="btn btn-outline-dark">5 Items in the Cart <i className="fas fa-shopping-cart"></i></button></Link>
+                         <Link to="/cart"><button type="button" className="btn btn-outline-dark">5 Items in the Cart <i className="fas fa-shopping-cart"></i></button></Link>
                         </div>
                     </div><br/>
                 </div>
@@ -68,7 +71,7 @@ class App extends Component {
                 
                 {/*CART*/}
                 <Route exact path={`/cart`} render = {
-                        props => <Cart />
+                        props => <Cart {...props} cart={cart}/>
                     }/>
             </Fragment>
         </BrowserRouter>

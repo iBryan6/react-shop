@@ -75,9 +75,16 @@
     ],
     "Cart":[
         {
-            "Item": "1",
-            "Quantity":"1",
-            "Price":"1"
+            "id": "1",
+            "item": "1",
+            "quantity":"1",
+            "price":"1"
+        },
+        {
+            "id": "2",
+            "item": "2",
+            "quantity":"2",
+            "price":"2"
         }
     ]
 }
