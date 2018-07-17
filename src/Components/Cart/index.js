@@ -2,7 +2,7 @@ import React, { Fragment }from 'react'
 import DocumentTitle from 'react-document-title'
 import { Link } from 'react-router-dom'
 
-export default ({cart, numRows}) =>
+export default ({cart}) =>
 
 <Fragment>
     {/*TITLE*/}
