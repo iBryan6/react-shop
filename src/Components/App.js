@@ -33,8 +33,13 @@ class App extends Component {
         }
     }
 
+    
+    componentDidMount(){
+        this.getArrays()
+    }
+    
     /*Fetch Backend data*/
-    async componentDidMount(){
+    async getArrays(){
         const tickets = await (await fetch('http://localhost:3004/tickets')).json()
         this.setState({tickets})
         const cart = await (await fetch('http://localhost:3004/cart')).json()
@@ -46,7 +51,7 @@ class App extends Component {
         const {tickets} = this.state
         const {cart} = this.state
 
-        /*Count items lenght*/
+        /*Count items length*/
         const membersToRender = this.state.cart
         const numRows = membersToRender.length
 
