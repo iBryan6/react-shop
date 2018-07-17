@@ -37,7 +37,7 @@ export default ({cart, DeletefromCart}) =>
                     <td>{quantity}</td>
                     <td>${price}</td>
                     <td>${quantity*price}</td>
-                    <td><button type="button" onClick={DeletefromCart} className="btn btn-sm btn-danger">Delete</button></td>
+                    <td><button type="button" onClick={()=>DeletefromCart(id)} className="btn btn-sm btn-danger">Delete</button></td>
                 </tr>
                 )}
             </tbody>

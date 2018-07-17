@@ -25,29 +25,25 @@ function Homebody (){
 }
 class App extends Component {
     /*Constructor*/
-    constructor(props){
-        super(props)
+    constructor(cart){
+        super(cart)
         this.state = {
             tickets: [],
             cart:[]
         }
         this.DeletefromCart = this.DeletefromCart.bind(this)
     }
-
-    componentDidMount(){
-        this.getArrays()
-    }
-    
     /*Fetch Backend data*/
-    async getArrays(){
+    async componentDidMount(){
         const tickets = await (await fetch('http://localhost:3004/tickets')).json()
         this.setState({tickets})
         const cart = await (await fetch('http://localhost:3004/cart')).json()
         this.setState({cart})
     }
 
-    DeletefromCart(){
-        console.log("item")
+    /*Delete from Cart*/
+    DeletefromCart(id){
+        console.log(id)
     }
 
     render() {
