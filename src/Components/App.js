@@ -31,6 +31,7 @@ class App extends Component {
             tickets: [],
             cart:[]
         }
+        this.DeletefromCart = this.DeletefromCart.bind(this)
     }
 
     componentDidMount(){
@@ -45,10 +46,15 @@ class App extends Component {
         this.setState({cart})
     }
 
+    DeletefromCart(){
+        console.log("item")
+    }
+
     render() {
         /*Set Variables from states*/
         const {tickets} = this.state
         const {cart} = this.state
+
 
         /*Count items length*/
         const membersToRender = this.state.cart
@@ -80,7 +86,7 @@ class App extends Component {
                 
                 {/*CART*/}
                 <Route exact path={`/cart`} render = {
-                    props => <Cart {...props} cart={cart} numRows={numRows} />
+                    props => <Cart {...props} cart={cart} numRows={numRows} DeletefromCart={this.DeletefromCart} />
                 }/>
             </Fragment>
         </BrowserRouter>

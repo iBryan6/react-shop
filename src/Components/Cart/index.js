@@ -2,7 +2,7 @@ import React, { Fragment }from 'react'
 import DocumentTitle from 'react-document-title'
 import { Link } from 'react-router-dom'
 
-export default ({cart}) =>
+export default ({cart, DeletefromCart}) =>
 
 <Fragment>
     {/*TITLE*/}
@@ -37,7 +37,7 @@ export default ({cart}) =>
                     <td>{quantity}</td>
                     <td>${price}</td>
                     <td>${quantity*price}</td>
-                    <td><button type="button" className="btn btn-sm btn-danger">Delete</button></td>
+                    <td><button type="button" onClick={DeletefromCart} className="btn btn-sm btn-danger">Delete</button></td>
                 </tr>
                 )}
             </tbody>
