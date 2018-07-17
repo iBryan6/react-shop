@@ -63,12 +63,12 @@ class App extends Component {
 
                 {/*ITEM*/}
                 <Route exact path={`/catalog/:catalogId`} render = {
-                        props => <Item />
+                        props => <Item {...props} {...tickets.find(item => item.id === props.match.params.catalogId)} />
                     }/>
                 
                 {/*CART*/}
                 <Route exact path={`/cart`} render = {
-                        props => <Cart {...props} {...tickets.find(item => item.id === props.match.params.catalogId)} />
+                        props => <Cart />
                     }/>
             </Fragment>
         </BrowserRouter>
