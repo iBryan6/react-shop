@@ -1,5 +1,5 @@
 import React, { Component, Fragment} from 'react'
-import { BrowserRouter, Link, Route } from 'react-router-dom'
+import { BrowserRouter, Link, Route, Redirect } from 'react-router-dom'
 import DocumentTitle from 'react-document-title'
 import Catalog from './Catalog'
 import Item from './Catalog/Item'
@@ -62,9 +62,17 @@ class App extends Component {
                     props => <Catalog {...props} tickets={tickets} numRows={numRows} />
                 }/>
 
-                {/*ITEM*/}
+                {/*ITEM W/ REDIRECTS TO NON EXISTING ITEMS*/}
                 <Route exact path={`/catalog/:catalogId`} render = {
-                    props => <Item {...props} {...tickets.find(item => item.id === props.match.params.catalogId)} numRows={numRows}/>
+                    ({match}) => {
+                        const nonitem = tickets.find(item => item.id === match.params.catalogId) 
+                        if (!nonitem){
+                            return <Redirect to="/catalog/404" />
+                        }
+                        return <Item {...nonitem}
+                        numRows={numRows}
+                        />
+                    }                    
                 }/>
                 
                 {/*CART*/}
