@@ -11,7 +11,7 @@ export default ({ match:{url}, tickets })=>
             <Link to={`${url}/${id}`}>
                 <img className="card-img-top text-center" src={image} alt={"Logo of " + artist}></img>
                 <div className="card-body">
-                    <h5 className="card-title text-center">{artist} <i className="fas fa-cart-plus"></i></h5>
+                <h5 className="card-title text-center">{artist} <i className="fas fa-cart-plus"></i></h5>
                 </div>
             </Link>
         </div>

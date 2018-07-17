@@ -11,7 +11,7 @@ export default ({artist, image, genre,description,price}) =>
           </div>
           <div className="card-body">
             <img src={image} alt={"Logo of " + artist}></img><br/><br/>
-            <h1 className="card-title pricing-card-title">{price}</h1>
+            <h1 className="card-title pricing-card-title">${price}</h1>
             <small className="text-muted">{genre}</small><br/><br/>
             <p className="text-justify card-text">{description}</p>
             <button type="button" className="btn btn-lg btn-block btn-outline-dark">Add to Cart</button>

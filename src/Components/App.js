@@ -34,8 +34,13 @@ class App extends Component {
     }
 
     render() {
+        /*Set Variables from states*/
         const {tickets} = this.state
         const {cart} = this.state
+
+        /*Count items lenght*/
+        const membersToRender = this.state.cart
+        const numRows = membersToRender.length
 
         /*Page*/
         return <BrowserRouter>
@@ -49,7 +54,7 @@ class App extends Component {
                     </div>
                     <div className="row">
                         <div className="offset-md-10">
-                         <Link to="/cart"><button type="button" className="btn btn-outline-dark">5 Items in the Cart <i className="fas fa-shopping-cart"></i></button></Link>
+                         <Link to="/cart"><button type="button" className="btn btn-outline-dark">{numRows} Items in the Cart <i className="fas fa-shopping-cart"></i></button></Link>
                         </div>
                     </div><br/>
                 </div>
