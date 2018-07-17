@@ -1,12 +1,19 @@
 import React, { Fragment }from 'react'
 import DocumentTitle from 'react-document-title'
+import { Link } from 'react-router-dom'
 
-
-export default ({cart }) =>
+export default ({cart, numRows}) =>
 
 <Fragment>
 <DocumentTitle title='Cart'></DocumentTitle>
-
+    <div className="sticky-top sticky-nav">
+        <div className="row text-center">
+            <div className="col-md title">
+                <h1>Cart</h1>
+                <Link to="/catalog"><kbd><i class="fas fa-chevron-left"></i> GO BACK</kbd></Link>
+            </div>
+        </div><br/>
+    </div>
     <div className="container">
             <table className="table">
                 <thead>

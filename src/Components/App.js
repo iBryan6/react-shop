@@ -5,12 +5,21 @@ import Catalog from './Catalog'
 import Item from './Catalog/Item'
 import Cart from './Cart'
 
-//HOME
+//LANDING PAGE
 function Homebody (){
     return (
+        <div>
+        <div className="sticky-top sticky-nav">
+            <div className="row text-center">
+                <div className="col-md title">
+                    <h1>Landing Page</h1><br/>
+                </div>
+            </div>
+        </div>
         <div className="container text-center">
         <DocumentTitle title='Home'></DocumentTitle>
-            <Link to="/catalog" className="text-center">CLICK ME TO CONTINUE</Link>
+            <Link to="/catalog" className="text-center"><button type="button" className="btn btn-outline-dark">CLICK ME TO CONTINUE</button></Link>
+        </div>
         </div>
     )
 }
@@ -45,39 +54,23 @@ class App extends Component {
         /*Page*/
         return <BrowserRouter>
             <Fragment>
-                {/*HEADER*/}
-                <div className="sticky-top sticky-nav">
-                    <div className="row text-center">
-                        <div className="col-md title">
-                            <Link to="/catalog"><h1>Concert Tickets</h1></Link>
-                        </div>
-                    </div>
-                    <div className="row">
-                        <div className="offset-md-10">
-                         <Link to="/cart"><button type="button" className="btn btn-outline-dark">{numRows} Items in the Cart <i className="fas fa-shopping-cart"></i></button></Link>
-                        </div>
-                    </div><br/>
-                </div>
-
-                {/*HOME*/}
+                {/*LANDING*/}
                 <Route exact path="/" component={Homebody} />
 
                 {/*CATALOG*/}
-                <div className="card-columns row">
-                    <Route exact path="/catalog" render = {
-                        props => <Catalog {...props} tickets={tickets} />
-                    }/>
-                </div>
+                <Route exact path="/catalog" render = {
+                    props => <Catalog {...props} tickets={tickets} numRows={numRows} />
+                }/>
 
                 {/*ITEM*/}
                 <Route exact path={`/catalog/:catalogId`} render = {
-                        props => <Item {...props} {...tickets.find(item => item.id === props.match.params.catalogId)} />
-                    }/>
+                    props => <Item {...props} {...tickets.find(item => item.id === props.match.params.catalogId)} numRows={numRows}/>
+                }/>
                 
                 {/*CART*/}
                 <Route exact path={`/cart`} render = {
-                        props => <Cart {...props} cart={cart}/>
-                    }/>
+                    props => <Cart {...props} cart={cart} numRows={numRows} />
+                }/>
             </Fragment>
         </BrowserRouter>
     }
