@@ -23,12 +23,11 @@ function Homebody (){
         </div>
     )
 }
-
 class App extends Component {
     /*Constructor*/
     constructor(props){
         super(props)
-        this.state ={
+        this.state = {
             tickets: [],
             cart:[]
         }
