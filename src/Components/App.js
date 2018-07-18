@@ -32,6 +32,7 @@ class App extends Component {
             cart:[]
         }
         this.DeletefromCart = this.DeletefromCart.bind(this)
+        this.AddtoCart = this.AddtoCart.bind(this)
     }
     /*Fetch Backend data*/
     async componentDidMount(){
@@ -48,6 +49,18 @@ class App extends Component {
             return cart.id !== id;
         })
         this.setState({ cart: filtered })
+    }
+
+    /*Add to Cart*/
+    AddtoCart(id,item,quantity,price){
+        const cart = this.state.cart
+        cart.push({
+            id,
+            item,
+            quantity,
+            price
+        })
+        this.setState({cart})
     }
 
     render() {
@@ -80,9 +93,11 @@ class App extends Component {
                         }
                         return <Item {...nonitem}
                         numRows={numRows}
+                        AddtoCart={this.AddtoCart}
                         />
                     }                    
-                }/>
+                }
+                />
                 
                 {/*CART*/}
                 <Route exact path={`/cart`} render = {

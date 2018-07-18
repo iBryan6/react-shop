@@ -2,7 +2,7 @@ import React, { Fragment }from 'react'
 import DocumentTitle from 'react-document-title'
 import {Link} from 'react-router-dom'
 
-export default ({artist, image, genre,description,price, numRows}) =>
+export default ({ id, artist, image, genre,description,price, numRows, AddtoCart }) =>
 <Fragment>
     {/*TITLE*/}
     <DocumentTitle title={artist +" Ticket Detail"}></DocumentTitle>
@@ -33,7 +33,7 @@ export default ({artist, image, genre,description,price, numRows}) =>
                 <h1 className="card-title pricing-card-title">${price}</h1>
                 <small className="text-muted">{genre}</small><br/><br/>
                 <p className="text-justify card-text">{description}</p>
-                <button type="button" className="btn btn-lg btn-block btn-outline-dark">Add to Cart</button>
+                <button type="button" onClick={()=>AddtoCart(id,artist,1,price)} className="btn btn-lg btn-block btn-outline-dark">Add to Cart</button>
             </div>
         </div>
     </div>
