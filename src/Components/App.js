@@ -88,7 +88,7 @@ class App extends Component {
 
                 {/*CATALOG*/}
                 <Route exact path="/catalog" render = {
-                    props => <Catalog {...props} tickets={tickets} numRows={numRows} />
+                    props => <Catalog {...props} tickets={tickets} numRows={numRows} AddtoCart={this.AddtoCart} />
                 }/>
 
                 {/*ITEM W/ REDIRECTS TO NON EXISTING ITEMS*/}

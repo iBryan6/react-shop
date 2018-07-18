@@ -2,7 +2,7 @@ import React, { Fragment }from 'react'
 import {Link} from 'react-router-dom'
 import DocumentTitle from 'react-document-title'
 
-export default ({ match:{url}, tickets, numRows })=>
+export default ({ match:{url}, tickets, numRows, AddtoCart })=>
 <Fragment>
     {/*TITLE*/}
     <DocumentTitle title='Ticket Catalog'></DocumentTitle>
@@ -23,15 +23,14 @@ export default ({ match:{url}, tickets, numRows })=>
 
     {/*BODY*/}
     <div className="card-columns row">
-        {tickets.map(({id,artist,image}) =>
+        {tickets.map(({id,artist,image, price}) =>
         <div key={id} className="col-md-4">
             <div className="card text-center">
-                <Link to={`${url}/${id}`}>
-                    <img className="card-img-top text-center" src={image} alt={"Logo of " + artist}></img>
+                <Link to={`${url}/${id}`}><img className="card-img-top text-center" src={image} alt={"Logo of " + artist}></img></Link>
                     <div className="card-body">
-                    <h5 className="card-title text-center">{artist} <i className="fas fa-cart-plus"></i></h5>
+                    <h5 className="card-title text-center">{artist}<Link to={`${url}`}> <i className="fas fa-cart-plus" onClick={()=>AddtoCart(id,artist,1,price)}></i></Link></h5>
                     </div>
-                </Link>
+                
             </div>
         </div>
         )}
