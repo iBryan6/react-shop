@@ -106,7 +106,7 @@ class App extends Component {
                     ({match}) => {
                         const nonitem = tickets.find(item => item.id === match.params.catalogId) 
                         if (!nonitem){
-                            return <Redirect to="/catalog/404" />
+                            return <Redirect to="/" />
                         }
                         return <Item {...nonitem}
                         numRows={numRows}
