@@ -33,7 +33,7 @@ export default ({cart, DeletefromCart}) =>
             <tbody>
                 {cart.map(({id,item,quantity,price}) => 
                 <tr key={id}>
-                    <td><i class="fas fa-ticket-alt"></i> {item} - Concert Ticket</td>
+                    <td><i className="fas fa-ticket-alt"></i> {item} - Concert Ticket</td>
                     <td>{quantity}</td>
                     <td>${price}</td>
                     <td>${quantity*price}</td>

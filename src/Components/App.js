@@ -52,14 +52,21 @@ class App extends Component {
     }
 
     /*Add to Cart*/
-    AddtoCart(id,item,quantity,price){
+    AddtoCart(id,item,quantity,price, match){
         const cart = this.state.cart
-        cart.push({
-            id,
-            item,
-            quantity,
-            price
-        })
+        
+        const itemexists = cart.find(item => item.id === id) 
+        if (!itemexists){
+            cart.push({
+                id,
+                item,
+                quantity,
+                price
+            })
+        }
+        else{
+            alert("Ticket is already in your cart")
+        }
         this.setState({cart})
     }
 
