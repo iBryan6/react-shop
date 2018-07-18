@@ -2,7 +2,7 @@ import React, { Fragment }from 'react'
 import DocumentTitle from 'react-document-title'
 import {Link} from 'react-router-dom'
 
-export default ({ id, artist, image, genre,description,price, numRows, AddtoCart }) =>
+const ItemComponent = ({ id, artist, image, genre,description,price, numRows, AddtoCart }) =>
 <Fragment>
     {/*TITLE*/}
     <DocumentTitle title={artist +" Ticket Detail"}></DocumentTitle>
@@ -38,3 +38,4 @@ export default ({ id, artist, image, genre,description,price, numRows, AddtoCart
         </div>
     </div>
 </Fragment>
+export default ItemComponent

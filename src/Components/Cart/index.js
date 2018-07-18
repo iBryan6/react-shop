@@ -2,7 +2,7 @@ import React, { Fragment }from 'react'
 import DocumentTitle from 'react-document-title'
 import { Link } from 'react-router-dom'
 
-export default ({cart, DeletefromCart}) =>
+const CartComponent = ({cart, DeletefromCart, total}) =>
 
 <Fragment>
     {/*TITLE*/}
@@ -20,7 +20,7 @@ export default ({cart, DeletefromCart}) =>
 
     {/*BODY*/}
     <div className="container">
-        <table className="table">
+        <table className="table" id="cart-table">
             <thead>
                 <tr>
                     <th scope="col">Item</th>
@@ -32,18 +32,20 @@ export default ({cart, DeletefromCart}) =>
             </thead>
             <tbody>
                 {cart.map(({id,item,quantity,price}) => 
-                <tr key={id}>
+                <tr key={id} >
                     <td><i className="fas fa-ticket-alt"></i> {item} - Concert Ticket</td>
                     <td>{quantity}</td>
                     <td>${price}</td>
                     <td>${quantity*price}</td>
-                    <td><button type="button" onClick={()=>DeletefromCart(id)} className="btn btn-sm btn-danger">Delete</button></td>
+                    <td><button type="button" onClick={()=> DeletefromCart(id,price)} className="btn btn-sm btn-danger">Delete</button></td>
                 </tr>
                 )}
             </tbody>
         </table>
         <div className="offset-md-8">
-            <h2>Total: </h2>
+            <h2>Total: {total}</h2>
         </div>
     </div>
 </Fragment>
+
+export default CartComponent

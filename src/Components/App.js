@@ -29,11 +29,13 @@ class App extends Component {
         super(cart)
         this.state = {
             tickets: [],
-            cart:[]
+            cart:[],
+            total:0
         }
         this.DeletefromCart = this.DeletefromCart.bind(this)
         this.AddtoCart = this.AddtoCart.bind(this)
     }
+
     /*Fetch Backend data*/
     async componentDidMount(){
         const tickets = await (await fetch('http://localhost:3004/tickets')).json()
@@ -43,18 +45,22 @@ class App extends Component {
     }
 
     /*Delete from Cart*/
-    DeletefromCart(id){
+    DeletefromCart(id,price){
         const cart = this.state.cart
+        var total = this.state.total
         const filtered = cart.filter(cart =>{
             return cart.id !== id;
         })
         this.setState({ cart: filtered })
+        // eslint-disable-next-line
+        total = total - parseInt(price)
+        this.setState({total})
     }
 
     /*Add to Cart*/
-    AddtoCart(id,item,quantity,price, match){
-        const cart = this.state.cart
-        
+    AddtoCart(id,item,quantity,price){
+        const cart = this.state.cart 
+        var total = this.state.total
         const itemexists = cart.find(item => item.id === id) 
         if (!itemexists){
             cart.push({
@@ -63,17 +69,21 @@ class App extends Component {
                 quantity,
                 price
             })
+            // eslint-disable-next-line
+            total = parseInt(price) + total
         }
         else{
             alert("Ticket is already in your cart")
         }
         this.setState({cart})
+        this.setState({total})
     }
 
     render() {
         /*Set Variables from states*/
         const {tickets} = this.state
         const {cart} = this.state
+        const {total} = this.state
 
 
         /*Count items length*/
@@ -108,7 +118,7 @@ class App extends Component {
                 
                 {/*CART*/}
                 <Route exact path={`/cart`} render = {
-                    props => <Cart {...props} cart={cart} numRows={numRows} DeletefromCart={this.DeletefromCart} />
+                    props => <Cart {...props} cart={cart} total={total} numRows={numRows} DeletefromCart={this.DeletefromCart} />
                 }/>
             </Fragment>
         </BrowserRouter>

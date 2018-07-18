@@ -2,7 +2,7 @@ import React, { Fragment }from 'react'
 import {Link} from 'react-router-dom'
 import DocumentTitle from 'react-document-title'
 
-export default ({ match:{url}, tickets, numRows, AddtoCart })=>
+const CatalogComponent = ({ match:{url}, tickets, numRows, AddtoCart })=>
 <Fragment>
     {/*TITLE*/}
     <DocumentTitle title='Ticket Catalog'></DocumentTitle>
@@ -36,3 +36,5 @@ export default ({ match:{url}, tickets, numRows, AddtoCart })=>
         )}
     </div>
 </Fragment>
+
+export default CatalogComponent
