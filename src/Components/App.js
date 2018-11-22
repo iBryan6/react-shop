@@ -1,28 +1,9 @@
 import React, { Component, Fragment} from 'react'
-import { BrowserRouter, Link, Route, Redirect } from 'react-router-dom'
-import DocumentTitle from 'react-document-title'
+import { BrowserRouter, Route, Redirect } from 'react-router-dom'
 import Catalog from './Catalog'
 import Item from './Catalog/Item'
 import Cart from './Cart'
 
-//LANDING PAGE
-function Homebody (){
-    return (
-        <div>
-        <div className="sticky-top sticky-nav">
-            <div className="row text-center">
-                <div className="col-md title">
-                    <h1>Landing Page</h1><br/>
-                </div>
-            </div>
-        </div>
-        <div className="container text-center">
-        <DocumentTitle title='Home'></DocumentTitle>
-            <Link to="/catalog" className="text-center"><button type="button" className="btn btn-outline-dark">CLICK ME TO CONTINUE</button></Link>
-        </div>
-        </div>
-    )
-}
 class App extends Component {
     /*Constructor*/
     constructor(cart){
@@ -93,16 +74,14 @@ class App extends Component {
         /*Page*/
         return <BrowserRouter>
             <Fragment>
-                {/*LANDING*/}
-                <Route exact path="/" component={Homebody} />
 
                 {/*CATALOG*/}
-                <Route exact path="/catalog" render = {
+                <Route exact path="/" render = {
                     props => <Catalog {...props} tickets={tickets} numRows={numRows} AddtoCart={this.AddtoCart} />
                 }/>
 
                 {/*ITEM W/ REDIRECTS TO NON EXISTING ITEMS*/}
-                <Route exact path={`/catalog/:catalogId`} render = {
+                <Route exact path={`/producto/:catalogId`} render = {
                     ({match}) => {
                         const nonitem = tickets.find(item => item.id === match.params.catalogId) 
                         if (!nonitem){

@@ -2,6 +2,7 @@ import React, { Fragment }from 'react'
 import DocumentTitle from 'react-document-title'
 import {Link} from 'react-router-dom'
 
+
 const ItemComponent = ({ id, artist, image, genre,description,price, numRows, AddtoCart }) =>
 <Fragment>
     {/*TITLE*/}
@@ -12,7 +13,7 @@ const ItemComponent = ({ id, artist, image, genre,description,price, numRows, Ad
             <div className="row text-center">
                 <div className="col-md title">
                     <h1>{artist +" Ticket Detail"}</h1>
-                    <Link to="/catalog"><kbd><i className="fas fa-chevron-left"></i> GO BACK</kbd></Link>
+                    <Link to="/"><kbd><i className="fas fa-chevron-left"></i> GO BACK</kbd></Link>
                 </div>
                 </div>
             <div className="row">

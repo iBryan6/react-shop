@@ -12,8 +12,8 @@ const CartComponent = ({cart, DeletefromCart, total}) =>
     <div className="sticky-top sticky-nav">
         <div className="row text-center">
             <div className="col-md title">
-                <h1>Cart</h1>
-                <Link to="/catalog"><kbd><i className="fas fa-chevron-left"></i> GO BACK</kbd></Link>
+                <h1>CART</h1>
+                <Link to="/"><kbd><i className="fas fa-chevron-left"></i> GO BACK</kbd></Link>
             </div>
         </div><br/>
     </div>
